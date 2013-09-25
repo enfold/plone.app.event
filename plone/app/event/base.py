@@ -116,8 +116,10 @@ def get_events(context, start=None, end=None, limit=None,
     if sort_reverse:
         query['sort_order'] = 'reverse'
 
-    if limit:
-        query['sort_limit'] = limit
+    # XXX Passing the limit to the catalog can cause events that should be in
+    # the results to be missing from the results.
+    #if limit:
+    #    query['sort_limit'] = limit
 
     query.update(kw)
 
